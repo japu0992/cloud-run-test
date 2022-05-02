@@ -2,10 +2,11 @@ version: "3.9"
 services:
   web:
     build: .
+    command: flask run
     ports:
-      - "12000:9000"
+      - "12000:5000"
     volumes:
-      - .:/usr/src/app
+      - .:/app
     environment:
       FLASK_ENV: development
       FLASK_DEBUG: 1
