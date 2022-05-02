@@ -53,7 +53,7 @@ on:
 
 env:
   PROJECT_ID: earnest-monitor-348016 # TODO: update Google Cloud project id
-  SERVICE: my-service # TODO: update Cloud Run service name
+  SERVICE: myservice # TODO: update Cloud Run service name
   REGION: us-central1 # TODO: update Cloud Run service region
 
 jobs:
@@ -76,11 +76,12 @@ jobs:
          # service_account: '${{ secrets.WIF_SERVICE_ACCOUNT }}' # e.g. - my-service-account@my-project.iam.gserviceaccount.com
 
       # NOTE: Alternative option - authentication via credentials json
-      # - name: Google Auth
-      #   id: auth
-      #   uses: 'google-github-actions/auth@v0'
-      #   with:
-      #     credentials_json: '${{ secrets.GCP_CREDENTIALS }}'
+      - name: Google Auth
+        id: auth
+        uses: 'google-github-actions/auth@v0'
+        with:
+        
+          credentials_json: '${{ secrets.GCP_CREDENTIALS }}'
 
       - name: Deploy to Cloud Run
         id: deploy
